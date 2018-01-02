@@ -1,0 +1,13 @@
+{
+  "name": "GdLocation",
+  "version": "1.0.0",
+  "description": "使用高德地图进行定位",
+  "cordova": {
+    "id": "cordova-plugin-gdLocation",
+    "platforms": [
+      "android"
+    ]
+  },
+  "author": "ngd",
+  "license": "ISC"
+}
