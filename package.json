@@ -15,7 +15,7 @@
     "url": "git+https://github.com/nx6313/gdLocation.git"
   },
   "keywords": [
-    "cordova-plugin",
+    "ecosystem:cordova",
     "cordova-android"
   ],
   "bugs": {
