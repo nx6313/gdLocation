@@ -1,6 +1,6 @@
 {
   "name": "gdlocation",
-  "version": "1.0.10",
+  "version": "1.0.19",
   "description": "使用高德地图进行定位",
   "cordova": {
     "id": "cordova-plugin-gdLocation",
@@ -17,9 +17,5 @@
   "keywords": [
     "ecosystem:cordova",
     "cordova-android"
-  ],
-  "bugs": {
-    "url": "https://github.com/nx6313/gdLocation/issues"
-  },
-  "homepage": "https://github.com/nx6313/gdLocation#readme"
+  ]
 }
