@@ -1,6 +1,6 @@
 {
-  "name": "GdLocation",
-  "version": "1.0.1",
+  "name": "gdlocation",
+  "version": "1.0.8",
   "description": "使用高德地图进行定位",
   "cordova": {
     "id": "cordova-plugin-gdLocation",
@@ -9,5 +9,17 @@
     ]
   },
   "author": "ngd",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nx6313/gdLocation.git"
+  },
+  "keywords": [
+    "cordova-plugin",
+    "cordova-android"
+  ],
+  "bugs": {
+    "url": "https://github.com/nx6313/gdLocation/issues"
+  },
+  "homepage": "https://github.com/nx6313/gdLocation#readme"
 }
