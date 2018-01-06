@@ -24,7 +24,7 @@ $ cordova plugin add gdlocation
 表示是否为一次定位逻辑，设置为 true 表示进行一次定位请求，设置为 false 表示进行连续的定位请求<br>
 ● `interval: Number`<br>
 数值参数<br>
-连续定位的时间间隔，单位 秒，默认值 2000, 如果参数 `onceFlag` 设置为 true，该参数无效<br>
+连续定位的时间间隔，单位 毫秒，默认值 2000, 如果参数 `onceFlag` 设置为 true，该参数无效<br>
 ● `callBack: Function`<br>
 回调方法<br>
 当获取到位置信息后，回调该方法，返回位置信息
