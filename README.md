@@ -17,7 +17,7 @@ $ cordova plugin add gdlocation
 ```
 
 #### 方法说明
->**start(onceFlag, interval, callBack)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;开始进行定位**
+>☆ **start(onceFlag, interval, callBack)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;开始进行定位**
 <br><br>
 ● `onceFlag: Boolean`<br>
 布尔值参数<br>
@@ -28,7 +28,11 @@ $ cordova plugin add gdlocation
 ● `callBack: Function`<br>
 回调方法<br>
 当获取到位置信息后，回调该方法，返回位置信息
+<br><br><br>
+>**☆ stop()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;结束定位**
 
->**stop()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;结束定位**
-
+联系作者
+-----------------------------------------------
+- ``Email``&nbsp;&nbsp;&nbsp;2559635030@qq.com
+<br><br><br>
 ![](https://pandao.github.io/editor.md/examples/images/4.jpg)
