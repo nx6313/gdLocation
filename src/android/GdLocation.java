@@ -147,15 +147,18 @@ public class GdLocation extends CordovaPlugin {
                 return true;
             }
         } else if(action.equals("showRoute")) {
-            SpeechUtility.createUtility(this, SpeechConstant.APPID + "=5a597d0a");
+            SpeechUtility.createUtility(cordova.getActivity().getApplicationContext(), SpeechConstant.APPID + "=5a597d0a");
             initTTs();
-            showRoute();
+            JSONObject startObj = args.getJSONObject(0);
+            JSONObject endObj = args.getJSONObject(1);
+            showRoute(startObj, endObj);
+            return true;
         }
         return super.execute(action, args, callbackContext);
     }
 
     private void initTTs() {
-        mTts = SpeechSynthesizer.createSynthesizer(this, new InitListener() {
+        mTts = SpeechSynthesizer.createSynthesizer(cordova.getActivity().getApplicationContext(), new InitListener() {
             @Override
             public void onInit(int i) {
             }
@@ -192,7 +195,7 @@ public class GdLocation extends CordovaPlugin {
         }
         Poi start = new Poi(startLocationName, new LatLng(startLat, startLng), "");
         Poi end = new Poi(endLocationName, new LatLng(endLat, endLng), "");
-        AmapNaviPage.getInstance().showRouteActivity(this, new AmapNaviParams(start, null, end, AmapNaviType.DRIVER), new INaviInfoCallback() {
+        AmapNaviPage.getInstance().showRouteActivity(cordova.getActivity().getApplicationContext(), new AmapNaviParams(start, null, end, AmapNaviType.DRIVER), new INaviInfoCallback() {
             @Override
             public void onInitNaviFailure() {
                 // 导航初始化失败时的回调函数

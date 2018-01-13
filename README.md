@@ -6,9 +6,9 @@
 <br>
 
 >使用方法
->>提供两个方法
->>>- start(onceFlag, interval, callBack) 开始定位
->>>- stop() 结束定位
+>>- start(onceFlag, interval, callBack) 开始定位
+>>- stop() 结束定位
+>>- showRoute(startObj, endObj) 执行导航
 
 #### 插件安装
 ```cmd
@@ -30,6 +30,16 @@ $ cordova plugin add gdlocation
 当获取到位置信息后，回调该方法，返回位置信息
 <br><br><br>
 >**☆ stop()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;结束定位**
+<br><br><br>
+>**☆ showRoute(startObj, endObj)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;执行导航**
+<br><br>
+● `startObj: JSONObject`<br>
+JSON对象参数<br>
+导航的起点数据，格式为：{ startName: string, startLat: double, startLng: double }
+<br>
+● `endObj: JSONObject`<br>
+JSON对象参数<br>
+导航的终点数据，格式为：{ endName: string, endLat: double, endLng: double }
 
 联系作者
 -----------------------------------------------
