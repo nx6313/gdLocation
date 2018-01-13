@@ -6,6 +6,20 @@ import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
+import com.amap.api.maps.model.LatLng;
+import com.amap.api.maps.model.Poi;
+import com.amap.api.navi.AmapNaviPage;
+import com.amap.api.navi.AmapNaviParams;
+import com.amap.api.navi.AmapNaviType;
+import com.amap.api.navi.INaviInfoCallback;
+import com.amap.api.navi.model.AMapNaviLocation;
+
+import com.iflytek.cloud.InitListener;
+import com.iflytek.cloud.SpeechConstant;
+import com.iflytek.cloud.SpeechError;
+import com.iflytek.cloud.SpeechSynthesizer;
+import com.iflytek.cloud.SpeechUtility;
+import com.iflytek.cloud.SynthesizerListener;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
@@ -25,6 +39,8 @@ public class GdLocation extends CordovaPlugin {
     public AMapLocationClient mLocationClient = null;
     //声明AMapLocationClientOption对象
     public AMapLocationClientOption mLocationOption = null;
+    //语音合成Tts对象
+    public SpeechSynthesizer mTts = null;
 
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
@@ -130,8 +146,94 @@ public class GdLocation extends CordovaPlugin {
                 mLocationClient.onDestroy();
                 return true;
             }
+        } else if(action.equals("showRoute")) {
+            SpeechUtility.createUtility(this, SpeechConstant.APPID + "=5a597d0a");
+            initTTs();
+            showRoute();
         }
         return super.execute(action, args, callbackContext);
+    }
+
+    private void initTTs() {
+        mTts = SpeechSynthesizer.createSynthesizer(this, new InitListener() {
+            @Override
+            public void onInit(int i) {
+            }
+        });
+
+        mTts.setParameter(SpeechConstant.ENGINE_TYPE, SpeechConstant.TYPE_CLOUD);
+        mTts.setParameter(SpeechConstant.ENGINE_MODE, SpeechConstant.MODE_AUTO);
+        mTts.setParameter(SpeechConstant.VOICE_NAME, "xiaoping");
+        //设置合成语速
+        mTts.setParameter(SpeechConstant.SPEED, "40");
+        //设置合成音调
+        mTts.setParameter(SpeechConstant.PITCH, "50");
+        //设置合成音量
+        mTts.setParameter(SpeechConstant.VOLUME, "100");
+    }
+
+    private void showRoute(JSONObject startObj, JSONObject endObj) {
+        String startLocationName = "";
+        String endLocationName = "";
+        Double startLat = 0.0;
+        Double startLng = 0.0;
+        Double endLat = 0.0;
+        Double endLng = 0.0;
+        try {
+            startLocationName = startObj.getString("startName");
+            startLat = startObj.getDouble("startLat");
+            startLng = startObj.getDouble("startLng");
+            
+            endLocationName = endObj.getString("endName");
+            endLat = endObj.getDouble("endLat");
+            endLng = endObj.getDouble("endLng");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Poi start = new Poi(startLocationName, new LatLng(startLat, startLng), "");
+        Poi end = new Poi(endLocationName, new LatLng(endLat, endLng), "");
+        AmapNaviPage.getInstance().showRouteActivity(this, new AmapNaviParams(start, null, end, AmapNaviType.DRIVER), new INaviInfoCallback() {
+            @Override
+            public void onInitNaviFailure() {
+                // 导航初始化失败时的回调函数
+            }
+
+            @Override
+            public void onGetNavigationText(String s) {
+                // 导航播报信息回调函数
+                startSpeek(s);
+            }
+
+            @Override
+            public void onLocationChange(AMapNaviLocation aMapNaviLocation) {
+                // 当GPS位置有更新时的回调函数
+            }
+
+            @Override
+            public void onArriveDestination(boolean b) {
+                // 到达目的地后回调函数
+            }
+
+            @Override
+            public void onStartNavi(int i) {
+                // 启动导航后的回调函数
+            }
+
+            @Override
+            public void onCalculateRouteSuccess(int[] ints) {
+                // 算路成功回调
+            }
+
+            @Override
+            public void onCalculateRouteFailure(int i) {
+                // 步行或者驾车路径规划失败后的回调函数
+            }
+
+            @Override
+            public void onStopSpeaking() {
+                // 停止语音回调，收到此回调后用户可以停止播放语音
+            }
+        });
     }
 
 }

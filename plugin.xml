@@ -1,24 +1,23 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="cordova-plugin-gdLocation" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+<plugin id="cordova-plugin-gdLocation" version="1.0.0" 
+    xmlns="http://apache.org/cordova/ns/plugins/1.0" 
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <name>GdLocation</name>
     <js-module name="GdLocation" src="www/GdLocation.js">
         <clobbers target="GdLocation" />
     </js-module>
     <platform name="android">
         <framework src="src/android/GdLocation.gradle" custom="true" type="gradleReference" />
-
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="GdLocation">
                 <param name="android-package" value="com.hmj.nx6313.gdlocation.GdLocation" />
             </feature>
         </config-file>
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
-            <meta-data
-                android:name="com.amap.api.v2.apikey"
-                android:value="1ddd7a88c15b36a1c13e9125b3577bc1" />
+            <meta-data android:name="com.amap.api.v2.apikey" android:value="1ddd7a88c15b36a1c13e9125b3577bc1" />
             <service android:name="com.amap.api.location.APSService"></service>
+            <activity android:name="com.amap.api.navi.AmapRouteActivity" android:theme="@android:style/Theme.NoTitleBar" android:configChanges="orientation|keyboardHidden|screenSize" />
         </config-file>
-
         <config-file target="AndroidManifest.xml" parent="/*">
             <!--用于进行网络定位-->
             <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
@@ -38,11 +37,20 @@
             <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
             <!--用于申请调用A-GPS模块-->
             <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"></uses-permission>
+            <!-- 屏幕保持唤醒 -->
+            <uses-permission android:name="android.permission.WAKE_LOCK" />
             <!--用于申请获取蓝牙信息进行室内定位-->
             <uses-permission android:name="android.permission.BLUETOOTH"></uses-permission>
             <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"></uses-permission>
         </config-file>
-
+        <source-file src="src/android/libs/arm64-v8a/libmsc.so" target-dir="libs/arm64-v8a"/>
+        <source-file src="src/android/libs/armeabi/libmsc.so" target-dir="libs/armeabi"/>
+        <source-file src="src/android/libs/armeabi-v7a/libmsc.so" target-dir="libs/armeabi-v7a"/>
+        <source-file src="src/android/libs/mips/libmsc.so" target-dir="libs/mips"/>
+        <source-file src="src/android/libs/mips64/libmsc.so" target-dir="libs/mips64"/>
+        <source-file src="src/android/libs/x86/libmsc.so" target-dir="libs/x86"/>
+        <source-file src="src/android/libs/x86_64/libmsc.so" target-dir="libs/x86_64"/>
+        <source-file src="src/android/libs/Msc.jar" target-dir="libs"/>
         <source-file src="src/android/GdLocation.java" target-dir="src/com/hmj/nx6313/gdlocation"/>
     </platform>
 </plugin>
