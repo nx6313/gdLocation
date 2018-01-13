@@ -1,6 +1,7 @@
 package com.hmj.nx6313.gdlocation;
 
 import android.util.Log;
+import android.os.Bundle;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
