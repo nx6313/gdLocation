@@ -46,8 +46,6 @@
         <source-file src="src/android/libs/arm64-v8a/libmsc.so" target-dir="libs/arm64-v8a"/>
         <source-file src="src/android/libs/armeabi/libmsc.so" target-dir="libs/armeabi"/>
         <source-file src="src/android/libs/armeabi-v7a/libmsc.so" target-dir="libs/armeabi-v7a"/>
-        <source-file src="src/android/libs/mips/libmsc.so" target-dir="libs/mips"/>
-        <source-file src="src/android/libs/mips64/libmsc.so" target-dir="libs/mips64"/>
         <source-file src="src/android/libs/x86/libmsc.so" target-dir="libs/x86"/>
         <source-file src="src/android/libs/x86_64/libmsc.so" target-dir="libs/x86_64"/>
         <source-file src="src/android/libs/Msc.jar" target-dir="libs"/>
