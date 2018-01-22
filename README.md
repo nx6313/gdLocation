@@ -12,8 +12,8 @@
 
 #### 插件安装
 ```cmd
-$ npm install gdlocation
-$ cordova plugin add gdlocation
+$ npm install cordova-plugin-gdlocation
+$ cordova plugin add cordova-plugin-gdlocation
 ```
 
 #### 方法说明
