@@ -148,10 +148,11 @@ public class GdLocation extends CordovaPlugin {
                 return true;
             }
         } else if(action.equals("showRoute")) {
-            SpeechUtility.createUtility(cordova.getActivity().getApplicationContext(), SpeechConstant.APPID + "=5a597d0a");
+            String TtsAppId = args.getString(0);
+            SpeechUtility.createUtility(cordova.getActivity().getApplicationContext(), SpeechConstant.APPID + "=" + TtsAppId);
             initTTs();
-            JSONObject startObj = args.getJSONObject(0);
-            JSONObject endObj = args.getJSONObject(1);
+            JSONObject startObj = args.getJSONObject(1);
+            JSONObject endObj = args.getJSONObject(2);
             showRoute(startObj, endObj);
             return true;
         }

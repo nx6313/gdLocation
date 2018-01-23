@@ -3,6 +3,9 @@
     xmlns="http://apache.org/cordova/ns/plugins/1.0" 
     xmlns:android="http://schemas.android.com/apk/res/android">
     <name>GdLocation</name>
+
+    <preference name="API_KEY" />
+    
     <js-module name="GdLocation" src="www/GdLocation.js">
         <clobbers target="GdLocation" />
     </js-module>
@@ -14,7 +17,7 @@
             </feature>
         </config-file>
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
-            <meta-data android:name="com.amap.api.v2.apikey" android:value="1ddd7a88c15b36a1c13e9125b3577bc1" />
+            <meta-data android:name="com.amap.api.v2.apikey" android:value="$API_KEY" />
             <service android:name="com.amap.api.location.APSService"></service>
             <activity android:name="com.amap.api.navi.AmapRouteActivity" android:theme="@android:style/Theme.NoTitleBar" android:configChanges="orientation|keyboardHidden|screenSize" />
         </config-file>

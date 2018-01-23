@@ -23,7 +23,7 @@ dependencies {
     // 2D地图so及jar
     compile 'com.amap.api:map2d:latest.integration'
     // 导航功能
-    // compile 'com.amap.api:navi-3dmap:latest.integration'
+    compile 'com.amap.api:navi-3dmap:latest.integration'
     // 定位功能
     compile 'com.amap.api:location:latest.integration'
     // 搜索功能

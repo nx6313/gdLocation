@@ -8,12 +8,12 @@
 >使用方法
 >>- start(onceFlag, interval, callBack) 开始定位
 >>- stop() 结束定位
->>- showRoute(startObj, endObj) 执行导航
+>>- showRoute(ttsAppId, startObj, endObj) 执行导航
 
 #### 插件安装
 ```cmd
 $ npm install cordova-plugin-gdlocation
-$ cordova plugin add cordova-plugin-gdlocation
+$ cordova plugin add cordova-plugin-gdlocation --variable API_KEY=高德地图中应用的API_KEY
 ```
 
 #### 方法说明
@@ -31,8 +31,12 @@ $ cordova plugin add cordova-plugin-gdlocation
 <br><br><br>
 >**☆ stop()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;结束定位**
 <br><br><br>
->**☆ showRoute(startObj, endObj)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;执行导航**
+>**☆ showRoute(ttsAppId, startObj, endObj)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;执行导航**
 <br><br>
+● `ttsAppId: String`<br>
+字符串参数<br>
+导航使用的讯飞语音AppId
+<br>
 ● `startObj: JSONObject`<br>
 JSON对象参数<br>
 导航的起点数据，格式为：{ startName: string, startLat: double, startLng: double }
