@@ -43,8 +43,11 @@
             <uses-permission android:name="android.permission.BLUETOOTH"></uses-permission>
             <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"></uses-permission>
         </config-file>
+        <source-file src="src/android/libs/arm64-v8a/libmsc.so" target-dir="libs/arm64-v8a"/>
+        <source-file src="src/android/libs/armeabi/libmsc.so" target-dir="libs/armeabi"/>
         <source-file src="src/android/libs/armeabi-v7a/libmsc.so" target-dir="libs/armeabi-v7a"/>
         <source-file src="src/android/libs/x86/libmsc.so" target-dir="libs/x86"/>
+        <source-file src="src/android/libs/x86_64/libmsc.so" target-dir="libs/x86_64"/>
         <source-file src="src/android/libs/Msc.jar" target-dir="libs"/>
         <source-file src="src/android/GdLocation.java" target-dir="src/com/hmj/nx6313/gdlocation"/>
     </platform>
