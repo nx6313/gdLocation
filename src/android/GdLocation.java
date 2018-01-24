@@ -238,6 +238,16 @@ public class GdLocation extends CordovaPlugin {
             public void onStopSpeaking() {
                 // 停止语音回调，收到此回调后用户可以停止播放语音
             }
+
+            @Override
+            public void onReCalculateRoute(int i) {
+
+            }
+
+            @Override
+            public void onExitPage(int i) {
+
+            }
         });
     }
 
