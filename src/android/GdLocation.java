@@ -43,6 +43,11 @@ public class GdLocation extends CordovaPlugin {
     //语音合成Tts对象
     public SpeechSynthesizer mTts = null;
 
+    public boolean isNavingFlag = false;
+    public boolean isRecordingFlag = false;
+    public double distance = 0;
+    public Timer timer = null;
+
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
@@ -153,7 +158,65 @@ public class GdLocation extends CordovaPlugin {
             initTTs();
             JSONObject startObj = args.getJSONObject(1);
             JSONObject endObj = args.getJSONObject(2);
+            isNavingFlag = true;
             showRoute(startObj, endObj);
+            return true;
+        } else if(action.equals("stopRoute")) {
+            if(isNavingFlag && locationClient != null) {
+                locationClient.stopLocation();
+            }
+            return true;
+        } else if(action.equals("startSpeak")) {
+            String ttsAppId = args.getString(0);
+            String speakContent = args.getString(1);
+            SpeechUtility.createUtility(cordova.getActivity().getApplicationContext(), SpeechConstant.APPID + "=" + TtsAppId);
+            if(mTts == null) {
+                initTTs();
+            }
+            startSpeek(speakContent);
+            return true;
+        } else if(action.equals("startRecord")) {
+            long interval = 2000L;
+            if(!args.isNull(0)) {
+                interval = args.getLong(0);
+            }
+            if (interval < 1000L) {
+                interval = 1000L;
+            }
+            int minDistance = 1;
+            if(!args.isNull(1)) {
+                minDistance = args.getInt(1);
+            }
+            int maxDistance = 10;
+            if(!args.isNull(2)) {
+                maxDistance = args.getInt(2);
+            }
+            isRecordingFlag = true;
+            distance = 0;
+            if(timer != null) {
+                timer.cancel();
+            }
+            timer = new Timer();
+            timer.schedule(new TimerTask(){
+                public void run(){
+                    // float distanceAdd = AMapUtils.calculateLineDistance(latLng1, latLng2);
+                    // if(distanceAdd >= minDistance && distanceAdd <= maxDistance) {
+                    //     distance += distanceAdd;
+                    // }
+                    PluginResult r = new PluginResult(PluginResult.Status.OK, distance);
+                    r.setKeepCallback(true);
+                    callbackContext.sendPluginResult(r);
+                }
+            }, interval);
+            return true;
+        } else if(action.equals("stopRecord")) {
+            isRecordingFlag = false;
+            distance = 0;
+            if(timer != null) {
+                timer.cancel();
+            }
+            return true;
+        } else if(action.equals("calcNavInfo")) {
             return true;
         }
         return super.execute(action, args, callbackContext);
