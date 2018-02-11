@@ -10,20 +10,20 @@ gdLocation.prototype.stop = function (arg0, success, error) {
 gdLocation.prototype.showRoute = function (ttsAppId, startObj, endObj, success, error) {
     exec(success, error, 'GdLocation', 'showRoute', [ttsAppId, startObj, endObj]);
 };
-gdLocation.prototype.stopRoute = function (arg0, success, error) {
-    exec(success, error, 'GdLocation', 'stopRoute', [arg0]);
+gdLocation.prototype.stopRoute = function (stopReason, success, error) {
+    exec(success, error, 'GdLocation', 'stopRoute', [stopReason]);
 };
 gdLocation.prototype.startSpeak = function (ttsAppId, speekContent, success, error) {
     exec(success, error, 'GdLocation', 'startSpeak', [ttsAppId, speekContent]);
 };
-gdLocation.prototype.startRecord = function (interval, success, error) {
-    exec(success, error, 'GdLocation', 'startRecord', [interval]);
+gdLocation.prototype.startRecord = function (interval, minDis, maxDis, success, error) {
+    exec(success, error, 'GdLocation', 'startRecord', [interval, minDis, maxDis]);
 };
 gdLocation.prototype.stopRecord = function (arg0, success, error) {
     exec(success, error, 'GdLocation', 'stopRecord', [arg0]);
 };
-gdLocation.prototype.calcNavInfo = function (startObj, endObj, success, error) {
-    exec(success, error, 'GdLocation', 'calcNavInfo', [startObj, endObj]);
+gdLocation.prototype.calcNavInfo = function (oneLatLng, twoLatLng, success, error) {
+    exec(success, error, 'GdLocation', 'calcNavInfo', [oneLatLng, twoLatLng]);
 };
 
 var location = new gdLocation();
