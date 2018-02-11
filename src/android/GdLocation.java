@@ -43,7 +43,7 @@ public class GdLocation extends CordovaPlugin {
 
     public boolean isNavingFlag = false;
     public boolean isRecordingFlag = false;
-    public double distance = 0;
+    public float distance = 0;
     public Timer timer = null;
 
     @Override
@@ -154,13 +154,18 @@ public class GdLocation extends CordovaPlugin {
         } else if(action.equals("showRoute")) {
             String ttsAppId = args.getString(0);
             SpeechUtility.createUtility(cordova.getActivity().getApplicationContext(), SpeechConstant.APPID + "=" + ttsAppId);
-            initTTs();
+            if (mTts == null) {
+                initTTs();
+            }
             JSONObject startObj = args.getJSONObject(1);
             JSONObject endObj = args.getJSONObject(2);
             isNavingFlag = true;
             showRoute(startObj, endObj);
             return true;
         } else if(action.equals("stopRoute")) {
+            if (mTts != null) {
+                mTts.stopSpeaking();
+            }
             if(isNavingFlag && mLocationClient != null) {
                 mLocationClient.stopLocation();
             }
