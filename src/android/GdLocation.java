@@ -30,10 +30,8 @@ import org.apache.cordova.PluginResult;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-/**
- * Created by nx6313 on 2018/1/2.
- */
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class GdLocation extends CordovaPlugin {
     //声明AMapLocationClient类对象
@@ -154,8 +152,8 @@ public class GdLocation extends CordovaPlugin {
                 return true;
             }
         } else if(action.equals("showRoute")) {
-            String TtsAppId = args.getString(0);
-            SpeechUtility.createUtility(cordova.getActivity().getApplicationContext(), SpeechConstant.APPID + "=" + TtsAppId);
+            String ttsAppId = args.getString(0);
+            SpeechUtility.createUtility(cordova.getActivity().getApplicationContext(), SpeechConstant.APPID + "=" + ttsAppId);
             initTTs();
             JSONObject startObj = args.getJSONObject(1);
             JSONObject endObj = args.getJSONObject(2);
@@ -163,14 +161,14 @@ public class GdLocation extends CordovaPlugin {
             showRoute(startObj, endObj);
             return true;
         } else if(action.equals("stopRoute")) {
-            if(isNavingFlag && locationClient != null) {
-                locationClient.stopLocation();
+            if(isNavingFlag && mLocationClient != null) {
+                mLocationClient.stopLocation();
             }
             return true;
         } else if(action.equals("startSpeak")) {
             String ttsAppId = args.getString(0);
             String speakContent = args.getString(1);
-            SpeechUtility.createUtility(cordova.getActivity().getApplicationContext(), SpeechConstant.APPID + "=" + TtsAppId);
+            SpeechUtility.createUtility(cordova.getActivity().getApplicationContext(), SpeechConstant.APPID + "=" + ttsAppId);
             if(mTts == null) {
                 initTTs();
             }
