@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-gdlocation",
-  "version": "1.0.44",
+  "version": "1.0.46",
   "description": "使用高德地图进行定位",
   "cordova": {
     "id": "cordova-plugin-gdlocation",

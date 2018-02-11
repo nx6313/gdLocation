@@ -54,7 +54,7 @@ JSON对象参数<br>
 <br><br>
 ● `stopReason: String`<br>
 字符串参数<br>
-停止导航的原因，可以忽略该参数<br>
+停止导航的原因<br>
 ● `callBack: Function`<br>
 回调方法<br>
 当导航停止后，回调该方法，无信息返回
