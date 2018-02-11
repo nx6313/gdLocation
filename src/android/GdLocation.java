@@ -86,6 +86,7 @@ public class GdLocation extends CordovaPlugin {
                                 location.put("floor", aMapLocation.getFloor()); // 当前室内定位的楼层
                                 location.put("gpsStatus", aMapLocation.getGpsAccuracyStatus()); // GPS的当前状态
                                 location.put("time", aMapLocation.getTime()); // 定位时间
+                                location.put("speed", aMapLocation.getSpeed()); // 当前移动速度
                             } catch (JSONException e) {
                             }
                             if(onceFlag) {
