@@ -226,8 +226,8 @@ public class GdLocation extends CordovaPlugin {
             }
             return true;
         } else if (action.equals("calcNavInfo")) {
-            JSONObject oneObj = args.getJSONObject(1);
-            JSONObject twoObj = args.getJSONObject(2);
+            JSONObject oneObj = args.getJSONObject(0);
+            JSONObject twoObj = args.getJSONObject(1);
 
             LatLng oneLatLng = new LatLng(oneObj.getDouble("lat"), oneObj.getDouble("lng"));
             LatLng twoLatLng = new LatLng(twoObj.getDouble("lat"), twoObj.getDouble("lng"));
